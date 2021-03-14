@@ -1,0 +1,40 @@
+CREATE TABLE CUSTOMER (
+    Customer_id Number(7,127)  CONSTRAINT pk_const PRIMARY KEY ; 
+    Customer_Name VARCHAR(20) ;
+    Customer_TEl Number (8,10)  CONSTRAINT pk_notNull NOTNULL ;
+)
+
+CREATE TABLE PRODUCT (
+    Product_id Number(12)  CONSTRAINT pk_const PRIMARY KEY ;
+    product_name VARCHAR(20)   CONSTRAINT pk_notNull NOTNULL ;
+    category VARCHAR(20)
+    price Number(5)   CONSTRAINT pk_notNull NOTNULL ;
+)
+
+CREATE TABLE Orders (
+    Customer_id Number(7,127)  ;
+    Product_id Number(12) ;
+    orderDate Date ()  ;
+    quantity Number(10)  ;
+    total_amount Number (5) ;
+    CONSTRAINT fr_keyConst FOREIGN KEY  Customer_id REFERENCE CUSTOMER  Customer_id ;
+    CONSTRAINT fr_keyConst FOREIGN KEY  Product_id REFERENCE PRODUCT Product_id ;
+
+)
+
+----------------------------------------------------------------------------------------
+
+INSERT INTO CUSTOMER 
+VALUES(C01,'ALI',71321009) ;
+INERT INTO CUSTOMER 
+VALUES(C02,'ASMA',77345823) ;
+
+INSERT INTO PRODUCT 
+VALUES (P01,'Samsung Galaxy 520','Smartphone',3299) ;
+INERT INTO PRODUCT 
+VALUES(P02,'ASUS Notebook',"Pc",4599) ;
+
+INSERT INTO Orders 
+VALUES(C01,P02,NULL,2,9198) 
+INSERT INTO Orders
+VALUES(C02,P01,'28/05/2020',1,3299)  
